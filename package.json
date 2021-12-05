@@ -1,0 +1,10 @@
+{
+  "name": "ToolZ",
+  "version": "1.0.0",
+  "dependencies": {
+    "shelljs": "^0.8.4"
+  },
+  "scripts": {
+    "compile": "pkg ToolZ.js"
+  }
+}
