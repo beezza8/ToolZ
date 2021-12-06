@@ -132,6 +132,10 @@ function writelog() {
                 break
             case "cjson":
                 const cjson_fname = await input.text("ファイル名 :")
+                if (fs.existsSync(cjson_fname)) {
+                    console.log(cjson_fname + "はしでに存在しています")
+                    break
+                }
                 const cjson_key = await input.text("キー :")
                 const cjson_value =await input.text("バリュー :")
                 fs.appendFileSync(cjson_fname, `{"${cjson_key}" : "${cjson_value}"}`)
