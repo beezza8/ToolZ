@@ -37,14 +37,7 @@ function writelog() {
 (async() => {
     if (!fs.existsSync("ToolZ-user.bez")) {
         console.log("- - # # 初回セットアップ # # - -")
-        console.log("githubからソースコードをクローン中...")
-        if (!shell.which("git")) {
-            console.log("gitがインストールされていないため続行することができませんでした\ngitをインストールしてください")
-            process.exit(1)
-        }
-        shell.exec("git clone https://github.com/beezza8/ToolZ")
-        
-        console.log("完了")
+
         let uname = await input.text("ユーザー名 : ")
         if (uname === "") {
             uname = "User"
