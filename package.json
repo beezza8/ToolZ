@@ -4,9 +4,10 @@
   "license": "MIT",
   "dependencies": {
     "input": "^1.0.1",
+    "pkg": "^5.5.1",
     "shelljs": "^0.8.4"
   },
   "scripts": {
-    "compile": "pkg src/ToolZ.js"
+    "compile": "cd C:/SOURCE/ToolZ/app/ & pkg ../src/ToolZ.js"
   }
 }
