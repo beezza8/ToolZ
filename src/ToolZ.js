@@ -121,6 +121,15 @@ function writelog() {
                     console.log(cmd_list[i])
                 }
                 break
+            case "date":
+                const date = new Date()
+                const year = date.getFullYear()
+                const month = date.getMonth() + 1
+                const DATE = date.getDate()
+                const hour = date.getHours()
+                const minute = date.getMinutes()
+                console.log(`${year}年 ${month}月 ${DATE}日 ${hour}時間 ${minute}分`)
+                break
             default:
                 console.log(`Command "${cmd}" not found!`)
         }
