@@ -2,6 +2,7 @@
   "name": "ToolZ",
   "version": "1.0.0",
   "dependencies": {
+    "input": "^1.0.1",
     "shelljs": "^0.8.4"
   },
   "scripts": {
