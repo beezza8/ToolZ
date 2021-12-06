@@ -105,6 +105,10 @@ function writelog() {
                     console.log("そのようなファイルは存在しません")
                     break
                 }
+                if (cat_data.endsWith(".exe") || cat_data.endsWith(".bin")) {
+                    console.log("バイナリファイルはクラシュのもとになるため出力できませんでした")
+                    break
+                }
                 const cat_data = fs.readFileSync(cat_path, "utf-8")
 
                 console.log("####################################################################################")
