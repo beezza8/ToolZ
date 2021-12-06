@@ -116,7 +116,7 @@ function writelog() {
                 console.log("####################################################################################")
                 break
             case "help":
-                console.log("-- All Commands --")
+                console.log("-- すべてのコマンド --")
                 for(let i = 0; i < cmd_list.length; i++) {
                     console.log(cmd_list[i])
                 }
@@ -129,6 +129,12 @@ function writelog() {
                 const hour = date.getHours()
                 const minute = date.getMinutes()
                 console.log(`${year}年 ${month}月 ${DATE}日 ${hour}時間 ${minute}分`)
+                break
+            case "cjson":
+                const cjson_fname = await input.text("ファイル名 :")
+                const cjson_key = await input.text("キー :")
+                const cjson_value =await input.text("バリュー :")
+                fs.appendFileSync(cjson_fname, `{"${cjson_key}" : "${cjson_value}"}`)
                 break
             default:
                 console.log(`Command "${cmd}" not found!`)
