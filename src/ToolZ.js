@@ -63,6 +63,7 @@ function writelog() {
     ###########################################################
     ###########################################################`)
     await console.log('"exit"と入力して終了')
+    const cmd_list = ["exit", "reset", "test", "touch", "version", "cat", "help"]
     while (true) {
         const user = fs.readFileSync("ToolZ-user.bez", "utf8").split(":")[0]
         cmd = await input.text(user + "@localhost >")
@@ -116,6 +117,12 @@ function writelog() {
                 console.log("####################################################################################")
                 console.log(cat_data)
                 console.log("####################################################################################")
+                break
+            case "help":
+                console.log("-- All Commands --")
+                for(let i = 0; i < cmd_list.length; i++) {
+                    console.log(cmd_list[i])
+                }
                 break
             default:
                 console.log(`Command "${cmd}" not found!`)
