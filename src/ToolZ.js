@@ -105,7 +105,7 @@ function writelog() {
                     console.log("そのようなファイルは存在しません")
                     break
                 }
-                if (cat_data.endsWith(".exe") || cat_data.endsWith(".bin")) {
+                if (cat_path.endsWith(".exe") || cat_path.endsWith(".bin")) {
                     console.log("バイナリファイルはクラシュのもとになるため出力できませんでした")
                     break
                 }
