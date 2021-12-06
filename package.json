@@ -6,6 +6,6 @@
     "shelljs": "^0.8.4"
   },
   "scripts": {
-    "compile": "pkg ToolZ.js"
+    "compile": "pkg src/ToolZ.js"
   }
 }
