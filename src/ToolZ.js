@@ -140,6 +140,8 @@ function writelog() {
                 const cjson_value = await input.text("バリュー :")
                 fs.appendFileSync(cjson_fname, `{"${cjson_key}" : "${cjson_value}"}`)
                 break
+            case "site":
+                console.log("https://github.com/beezza8/ToolZ/INFO.md")
             default:
                 console.log(`Command "${cmd}" not found!`)
         }
