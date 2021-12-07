@@ -24,19 +24,22 @@ let cmd
 let version = "1.0.0-BETA"
 const io = new IO(version, "Beezza", "[]")
 
-if (!fs.existsSync("ToolZ.log")) {
-    console.log("ログファイルを生成しています...")
-    fs.appendFileSync("ToolZ.log", "THIS FILE IS TOOLZ'S LOG FILE!\n")
-}
-
 function writelog() {
-    fs.appendFileSync("ToolZ.log", cmd + "\n")
+
 }
 
 
 (async() => {
     if (!fs.existsSync("ToolZ-user.bez")) {
         console.log("- - # # 初回セットアップ # # - -")
+        console.log("設定ファイルを生成しています...")
+        const data = `
+        {
+          "AnonymousMode" : false,
+          "PasswordProtection" : false,
+          "password" : "none"
+        }`
+        fs.appendFileSync("ToolZ-config.json", data)
 
         let uname = await input.text("ユーザー名 : ")
         if (uname === "") {
@@ -55,11 +58,29 @@ function writelog() {
     ###                                                     ###
     ###########################################################
     ###########################################################`)
+    const config = require("./ToolZ-config.json")
     await console.log('"exit"と入力して終了')
     const cmd_list = ["exit", "reset", "test", "touch", "version", "cat", "help", "cjson", "date", "docs"]
     while (true) {
         const user = fs.readFileSync("ToolZ-user.bez", "utf8").split(":")[0]
-        cmd = await input.text(user + "@localhost: $")
+        if (config.PasswordProtection) {
+            console.log("パスワード保護が有効なためパスワードを入力してください")
+            const passwd = await input.text("Password :")
+            if (passwd != config.password) {
+                console.log("パスワードが間違っているため3秒後に自動で終了します")
+                setTimeout(() => {
+                    process.exit(0)
+                }, 3000)
+            }else {
+
+            }
+        }
+        if (config.AnonymousMode) {
+            console.log("匿名モードでログインします")
+            cmd = await input.text("Anonymous@localhost : $")
+        }else {
+            cmd = await input.text(user + "@localhost: $")
+        }
         switch (cmd) {
             case "exit":
                 console.log("正常に終了しました")
