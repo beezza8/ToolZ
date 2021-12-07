@@ -133,7 +133,7 @@ function writelog() {
             case "cjson":
                 const cjson_fname = await input.text("ファイル名 :")
                 if (fs.existsSync(cjson_fname)) {
-                    console.log(cjson_fname + "はしでに存在しています")
+                    console.log(cjson_fname + "はすでに存在しています")
                     break
                 }
                 const cjson_key = await input.text("キー :")
