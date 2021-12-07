@@ -141,10 +141,10 @@ function writelog() {
                 fs.appendFileSync(cjson_fname, `{"${cjson_key}" : "${cjson_value}"}`)
                 break
             case "site":
-                console.log("https://beezza8.github.io/ToolZ/")
+                console.log("Our website is https://beezza8.github.io/ToolZ/")
                 break
             default:
-                console.log(`Command "${cmd}" not found!`)
+                console.log(`コマンド "${cmd}" が見つかりませんでした`)
         }
     }
 })()
