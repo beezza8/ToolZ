@@ -56,7 +56,7 @@ function writelog() {
     ###########################################################
     ###########################################################`)
     await console.log('"exit"と入力して終了')
-    const cmd_list = ["exit", "reset", "test", "touch", "version", "cat", "help"]
+    const cmd_list = ["exit", "reset", "test", "touch", "version", "cat", "help", "cjson"]
     while (true) {
         const user = fs.readFileSync("ToolZ-user.bez", "utf8").split(":")[0]
         cmd = await input.text(user + "@localhost >")
@@ -137,7 +137,7 @@ function writelog() {
                     break
                 }
                 const cjson_key = await input.text("キー :")
-                const cjson_value =await input.text("バリュー :")
+                const cjson_value = await input.text("バリュー :")
                 fs.appendFileSync(cjson_fname, `{"${cjson_key}" : "${cjson_value}"}`)
                 break
             default:
