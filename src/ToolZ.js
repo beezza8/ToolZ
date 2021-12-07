@@ -51,15 +51,15 @@ function writelog() {
     ###########################################################
     ###########################################################
     ###                                                     ###
-    ###             Welcome to ToolZ(${io.ver})            ###
+    ###             Welcome to ToolZ(${version})            ###
     ###                                                     ###
     ###########################################################
     ###########################################################`)
     await console.log('"exit"と入力して終了')
-    const cmd_list = ["exit", "reset", "test", "touch", "version", "cat", "help", "cjson"]
+    const cmd_list = ["exit", "reset", "test", "touch", "version", "cat", "help", "cjson", "date", "docs"]
     while (true) {
         const user = fs.readFileSync("ToolZ-user.bez", "utf8").split(":")[0]
-        cmd = await input.text(user + "@localhost >")
+        cmd = await input.text(user + "@localhost: $")
         switch (cmd) {
             case "exit":
                 console.log("正常に終了しました")
@@ -140,7 +140,7 @@ function writelog() {
                 const cjson_value = await input.text("バリュー :")
                 fs.appendFileSync(cjson_fname, `{"${cjson_key}" : "${cjson_value}"}`)
                 break
-            case "site":
+            case "docs":
                 console.log("https://github.com/beezza8/ToolZ/blob/main/INFO.md")
                 break
             default:
