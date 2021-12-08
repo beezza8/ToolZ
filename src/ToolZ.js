@@ -58,6 +58,7 @@ function writelog() {
     ###                                                     ###
     ###########################################################
     ###########################################################`)
+
     const config = require("./ToolZ-config.json")
     await console.log('"exit"と入力して終了')
     const cmd_list = ["exit", "reset", "test", "touch", "version", "cat", "help", "cjson", "date", "docs"]
