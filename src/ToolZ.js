@@ -1,6 +1,6 @@
 const os = require('os')
 const shell = require("shelljs")
-
+const request = require("request")
 class IO {
     constructor(ver, owner, admins) {
         this.ver = ver
@@ -178,8 +178,17 @@ function writelog() {
                 break
             case "see":
                 const seeAns = await input.text("URL :")
-                const res = seeAns.startsWith("http") ? fetch(seeAns).text : "URLが正しく入力されませんでした"
-                console.log(res)
+                const seeOption = {
+                    url : seeAns,
+                    method : "GET"
+                }
+                request(seeOption, (err, res, body) => {
+                    if (err) {
+                        console.log("そのようなサイトは存在しません")
+                    }else {
+                        console.log(body)
+                    }
+                })
                 break
             default:
                 console.log(`コマンド "${cmd}" が見つかりませんでした`)
