@@ -1,5 +1,6 @@
 const os = require('os')
 const shell = require("shelljs")
+
 class IO {
     constructor(ver, owner, admins) {
         this.ver = ver
@@ -20,6 +21,7 @@ class IO {
 
 const input = require("input")
 const fs = require("fs")
+
 let cmd
 let version = "1.0.0-BETA"
 const io = new IO(version, "Beezza", "[]")
@@ -164,6 +166,20 @@ function writelog() {
                 break
             case "site":
                 console.log("Our website is https://beezza8.github.io/ToolZ/")
+                break
+            case "download":
+                if (!shell.which("git")) {
+                    console.log("gitがインストールされてないため続行できませんでした\nhttps://github.com/beezza8/ToolZ より手動でダウンロードしてください")
+                    break
+                }
+                console.log("githubから新しいバージョンをダウンロードしています...")
+                shell.exec("git clone https://github.com/beezza8/ToolZ")
+                console.log("最新のバージョンを" + __dirname + "/ToolZにダウンロードしました")
+                break
+            case "see":
+                const seeAns = await input.text("URL :")
+                const res = seeAns.startsWith("http") ? fetch(seeAns).text : "URLが正しく入力されませんでした"
+                console.log(res)
                 break
             default:
                 console.log(`コマンド "${cmd}" が見つかりませんでした`)
